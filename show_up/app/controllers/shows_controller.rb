@@ -10,8 +10,21 @@ class ShowsController < ApplicationController
   end
 
   def create
+      @venue = Venue.find_by(venue_name:params[:venue_name])
+
       @show = Show.new({title: params[:title], date: params[:date], poster_link: params[:poster_link],
-        venue_id: params[:venue_id]})
+        venue_id: @venue.id })
+
+        @band1 = Band.find_by(band_name: params[:first_band])
+        @band2 = Band.find_by(band_name: params[:second_band])
+        @band3 = Band.find_by(band_name: params[:third_band])
+        @band4 = Band.find_by(band_name: params[:fourth_band])
+
+        @show.bands << @band1.id
+        # bandshow.create(band_id: @band1.id, show_id: @show.id)
+      # JoinTableBandsShows.create(band_id: @band2.id, show_id: @show.id)
+      # JoinTableBandsShows.create(band_id: @band3.id, show_id: @show.id)
+      # JoinTableBandsShows.create(band_id: @band4.id, show_id: @show.id)
 
       if @show.save
           render json: @show, status: :created

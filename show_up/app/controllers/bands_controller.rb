@@ -16,7 +16,9 @@ class BandsController < ApplicationController
   end
 
   def create
-    @band = Band.new(band_params)
+    @band = Band.new({band_name: params[:band_name], email: params[:email], password: params[:password],
+      password_confirmation: params[:password_confirmation], band_website: params[:band_website],
+      photo_link: params[:photo_link]})
     if @band.save
       render json: @band, status: :created
     end
