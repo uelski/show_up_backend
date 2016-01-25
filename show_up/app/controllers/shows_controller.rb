@@ -11,22 +11,30 @@ class ShowsController < ApplicationController
 
   def create
       @venue = Venue.find_by(venue_name:params[:venue_name])
+      @band1 = Band.find_by(band_name: params[:first_band])
+      @band2 = Band.find_by(band_name: params[:second_band])
+      @band3 = Band.find_by(band_name: params[:third_band])
+      @band4 = Band.find_by(band_name: params[:fourth_band])
 
       @show = Show.new({title: params[:title], date: params[:date], poster_link: params[:poster_link],
-        venue_id: @venue.id })
+        venue_name: params[:venue_name], venue_id: @venue.id })
 
-        @band1 = Band.find_by(band_name: params[:first_band])
-        @band2 = Band.find_by(band_name: params[:second_band])
-        @band3 = Band.find_by(band_name: params[:third_band])
-        @band4 = Band.find_by(band_name: params[:fourth_band])
 
-        @show.bands << @band1.id
-        # bandshow.create(band_id: @band1.id, show_id: @show.id)
-      # JoinTableBandsShows.create(band_id: @band2.id, show_id: @show.id)
-      # JoinTableBandsShows.create(band_id: @band3.id, show_id: @show.id)
-      # JoinTableBandsShows.create(band_id: @band4.id, show_id: @show.id)
+        #binding.pry
 
       if @show.save
+        if (@band1 != nil )
+          BandShow.create({band_id: @band1.id, show_id: @show.id})
+        end
+        if (@band2 != nil )
+          BandShow.create({band_id: @band2.id, show_id: @show.id})
+        end
+        if (@band3 != nil )
+          BandShow.create({band_id: @band3.id, show_id: @show.id})
+        end
+        if (@band4 != nil)
+          BandShow.create({band_id: @band4.id, show_id: @show.id})
+        end
           render json: @show, status: :created
       else
           render json: @show.errors, status: :unprocessable_entity

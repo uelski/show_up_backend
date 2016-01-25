@@ -4,10 +4,10 @@ class CreateShows < ActiveRecord::Migration
       t.string :title
       t.date :date
       t.string :poster_link
+      t.string :venue_name
       t.integer :venue_id
 
       t.timestamps null: false
     end
-    add_index :shows, :venue_id
   end
 end

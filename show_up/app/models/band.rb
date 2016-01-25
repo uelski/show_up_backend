@@ -1,5 +1,6 @@
 class Band < ActiveRecord::Base
   has_secure_password
-  has_and_belongs_to_many :shows
+  has_many :shows, :through => :band_shows
+  has_many :band_shows
   validates :band_name, presence: true, uniqueness: true
 end
