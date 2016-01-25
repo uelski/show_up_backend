@@ -9,6 +9,11 @@ class VenuesController < ApplicationController
       render json: @venue
   end
 
+  def venueShows
+    @venue = Venue.find(params[:id])
+    render json: @venue.shows
+  end
+
   def create
       @venue = Venue.new({venue_name: params[:venue_name], address: params[:address],
         venue_website: params[:venue_website]})

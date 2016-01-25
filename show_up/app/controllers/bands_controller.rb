@@ -10,6 +10,10 @@ class BandsController < ApplicationController
       render json: @band
   end
 
+  def bandShow
+    @band = Band.find(params[:id])
+    render json: @band.shows
+  end
 
   def new
     @band = Band.new

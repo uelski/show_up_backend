@@ -9,6 +9,11 @@ class ShowsController < ApplicationController
       render json: @show
   end
 
+  def showBand
+    @show = Show.find(params[:id])
+    render json: @show.bands
+  end
+
   def create
       @venue = Venue.find_by(venue_name:params[:venue_name])
       @band1 = Band.find_by(band_name: params[:first_band])
