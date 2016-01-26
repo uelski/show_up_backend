@@ -19,6 +19,16 @@ class BandsController < ApplicationController
     @band = Band.new
   end
 
+  def update
+    @band = Band.find(params[:id])
+    if @band.update({email: params[:email], band_website: params[:band_website],
+      photo_link: params[:photo_link]})
+        head :no_content
+    else
+        render json: @band.errors, status: :unprocessable_entity
+    end
+  end
+
   def create
     @band = Band.new({band_name: params[:band_name], email: params[:email], password: params[:password],
       password_confirmation: params[:password_confirmation], band_website: params[:band_website],

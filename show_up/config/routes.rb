@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   resources :shows
   resources :venues
-  resources :bands, only: [:new, :index, :create, :show]
+  resources :bands
   resources :sessions, only: [:new, :create, :destroy]
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
