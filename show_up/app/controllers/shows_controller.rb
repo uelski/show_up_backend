@@ -1,5 +1,6 @@
 class ShowsController < ApplicationController
   def index
+    authorize
       @shows = Show.all
       render json: @shows, status: :ok
   end
@@ -15,6 +16,7 @@ class ShowsController < ApplicationController
   end
 
   def create
+    authorize
       @venue = Venue.find_by(venue_name:params[:venue_name])
       @band1 = Band.find_by(band_name: params[:first_band])
       @band2 = Band.find_by(band_name: params[:second_band])
@@ -47,6 +49,7 @@ class ShowsController < ApplicationController
   end
 
   def update
+    authorize
       @show = Show.find(params[:id])
       if @show.update({title: params[:title], date: params[:date], poster_link: params[:poster_link],
         venue_id: params[:venue_id]})
@@ -57,6 +60,7 @@ class ShowsController < ApplicationController
   end
 
   def destroy
+    authorize
     @show = Show.find(params[:id])
       @show.destroy
 

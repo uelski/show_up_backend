@@ -16,10 +16,12 @@ class BandsController < ApplicationController
   end
 
   def new
+    authorize
     @band = Band.new
   end
 
   def update
+    authorize
     @band = Band.find(params[:id])
     if @band.update({email: params[:email], band_website: params[:band_website],
       photo_link: params[:photo_link]})

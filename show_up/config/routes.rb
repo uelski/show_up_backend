@@ -8,12 +8,13 @@ Rails.application.routes.draw do
   get '/band_shows/:id', to: 'bands#bandShow'
   get '/venue_shows/:id', to: 'venues#venueShows'
   put '/bands/:id', to: 'bands#update'
+  get '/sessions', to: 'sessions#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   resources :shows
   resources :venues
   resources :bands
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy, :show]
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

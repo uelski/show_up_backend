@@ -15,6 +15,7 @@ class VenuesController < ApplicationController
   end
 
   def create
+    authorize
       @venue = Venue.new({venue_name: params[:venue_name], address: params[:address],
         venue_website: params[:venue_website]})
 
@@ -26,6 +27,7 @@ class VenuesController < ApplicationController
   end
 
   def update
+    authorize
       @venue = Venue.find(params[:id])
       if @venue.update({address: params[:address],
         venue_website: params[:venue_website]})
@@ -36,6 +38,7 @@ class VenuesController < ApplicationController
   end
 
   def destroy
+    authorize
     @venue = Venue.find(params[:id])
       @venue.destroy
 

@@ -8,8 +8,13 @@ class SessionsController < ApplicationController
     session[:band_id] = band.id
     redirect_to "http://localhost:5000/"
     else
-    redirect_to "http://localhost:5000/bands/login"
+    redirect_to "http://localhost:5000/login"
+    end
   end
+
+  def show
+    @band = Band.find(params[:session][:band_id])
+    render json: @band.band_name
   end
 
   def destroy
