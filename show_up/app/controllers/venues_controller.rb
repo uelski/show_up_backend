@@ -27,7 +27,7 @@ class VenuesController < ApplicationController
 
   def update
       @venue = Venue.find(params[:id])
-      if @venue.update({venue_name: params[:venue_name], address: params[:address],
+      if @venue.update({address: params[:address],
         venue_website: params[:venue_website]})
           head :no_content
       else
