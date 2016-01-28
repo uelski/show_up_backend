@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
 
-  get '/login', to: 'sessions#new'
-
-  post '/logout', to: 'sessions#destroy'
+  # get '/login', to: 'sessions#new'
+  #
+  # post '/logout', to: 'sessions#destroy'
 
   get '/show_bands/:id', to: 'shows#showBand'
   get '/band_shows/:id', to: 'bands#bandShow'
   get '/venue_shows/:id', to: 'venues#venueShows'
   put '/bands/:id', to: 'bands#update'
-  get '/sessions', to: 'sessions#show'
+  # get '/sessions', to: 'sessions#show'
+  post '/authenticate', to: 'auth#authenticate'
+  post '/create', to: 'auth#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   resources :shows
