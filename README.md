@@ -5,7 +5,7 @@ This repo contains the RESTful API back-end corresponding to the Node Express ap
 The idea behind this app came from aggregating information on smaller, local and DIY shows, allowing bands to act as users, sign-up, and post upcoming events. I love playing music, and found a need for often overlooked and unheard of bands to get their info out in the open in one place.
 
 Technologies used:
-1. RESTful Rails-Api
+- RESTful Rails-Api
 2. PostgreSQL
 3. Active Record ORM
 2. rack-cors gem for cross-origin AJAX calls
